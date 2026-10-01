@@ -12,11 +12,11 @@ export class Angular1722LandComponent {
   readonly activeTabId = signal(this.tabs[0].id);
 
   get activeTab(): AngularFeatureTab {
-    return this.tabs.find((tab) => tab.id === this.activeTabId()) ?? this.tabs[0];
+    return this.tabs.find((tab: { id: any; }) => tab.id === this.activeTabId()) ?? this.tabs[0];
   }
 
   get activeIndex(): number {
-    return this.tabs.findIndex((tab) => tab.id === this.activeTabId());
+    return this.tabs.findIndex((tab: { id: any; }) => tab.id === this.activeTabId());
   }
 
   selectTab(tabId: string): void {
@@ -25,6 +25,10 @@ export class Angular1722LandComponent {
 
   isActive(tabId: string): boolean {
     return this.activeTabId() === tabId;
+  }
+
+  isVersionHighlighted(version: string): boolean {
+    return this.activeTab.milestoneYears.includes(version);
   }
 
   selectRelativeTab(offset: number): void {

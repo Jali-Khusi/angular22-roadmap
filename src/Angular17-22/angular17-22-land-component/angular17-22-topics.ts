@@ -8,6 +8,8 @@ export interface AngularFeatureExample {
 export interface AngularFeatureTab {
   id: string;
   label: string;
+  release: string;
+  milestoneYears: string[];
   kicker: string;
   title: string;
   intro: string;
@@ -20,6 +22,8 @@ export const ANGULAR_FEATURE_TABS: AngularFeatureTab[] = [
   {
     id: 'templates',
     label: 'Template control',
+    release: 'Angular 17: control flow and @defer · Angular 18.1: @let',
+    milestoneYears: ['17', '18'],
     kicker: '01 / DECLARATIVE TEMPLATES',
     title: 'Control what the template renders',
     intro: 'Modern Angular templates include built-in control flow, template-local variables, and deferred views. These features make conditional, repeated, and optional UI more readable.',
@@ -73,6 +77,8 @@ export const ANGULAR_FEATURE_TABS: AngularFeatureTab[] = [
   {
     id: 'signals',
     label: 'Signals',
+    release: 'Angular 16 preview · Angular 17 stable · Angular 19 linkedSignal preview',
+    milestoneYears: ['17', '19'],
     kicker: '02 / REACTIVE STATE',
     title: 'Model state with Signals',
     intro: 'Signals represent current values and let Angular track which views and computations depend on them. Pick the signal type based on who owns and updates the state.',
@@ -127,6 +133,8 @@ this.options.set(['large', 'x-large']);
   {
     id: 'component-api',
     label: 'Component APIs',
+    release: 'Angular 17 preview · Angular 19 stable signal APIs',
+    milestoneYears: ['17', '19'],
     kicker: '03 / COMPONENT CONTRACTS',
     title: 'Make component inputs and queries reactive',
     intro: 'Signal-based inputs, models, outputs, and queries make component contracts reactive and explicit.',
@@ -178,6 +186,8 @@ focusSearch(): void {
   {
     id: 'routing',
     label: 'Functional routing',
+    release: 'Angular 14.2+ functional guards · Angular 16+ route input binding',
+    milestoneYears: ['17'],
     kicker: '04 / NAVIGATION',
     title: 'Use function-based Router APIs',
     intro: 'Standalone router providers, functional guards and resolvers, lazy loading, and route-to-input binding make navigation easier to compose.',
@@ -229,6 +239,8 @@ product = input.required<Product>();`,
   {
     id: 'zoneless-forms',
     label: 'Zoneless & forms',
+    release: 'Angular 18 preview · Angular 20 stable zoneless · Angular 21 default for new apps',
+    milestoneYears: ['18', '20', '21'],
     kicker: '05 / CHANGE DETECTION',
     title: 'Understand zoneless Angular and form state',
     intro: 'Zoneless change detection relies on explicit Angular notifications instead of Zone.js task patching. Signals, template events, input updates, and observable bindings can notify Angular that a view needs work.',
@@ -277,6 +289,8 @@ this.emailControl.setValue('dev@example.com');`,
   {
     id: 'resources',
     label: 'Resource APIs',
+    release: 'Angular 19+ preview APIs · verify stability for your installed release',
+    milestoneYears: ['19'],
     kicker: '06 / ASYNC DATA',
     title: 'Load async data with resource() and rxResource()',
     intro: 'Resource APIs connect parameterized asynchronous reads to signal state and expose value, loading, and error information.',
@@ -331,6 +345,8 @@ userResource.error();`,
   {
     id: 'rxjs-interop',
     label: 'RxJS interop',
+    release: 'Angular 16.1+ · angular/core/rxjs-interop',
+    milestoneYears: ['17'],
     kicker: '07 / SIGNALS + STREAMS',
     title: 'Move deliberately between Signals and RxJS',
     intro: 'Signals represent a current value; Observables represent values over time. Interop helpers bridge them while keeping subscription lifetime and stream timing explicit.',
@@ -383,6 +399,8 @@ results = toSignal(
   {
     id: 'signal-forms',
     label: 'Signal Forms',
+    release: 'Angular 21+ developer preview · verify Angular 22 status',
+    milestoneYears: ['21', '22'],
     kicker: '08 / FORM STATE',
     title: 'Understand Signal Forms and their status',
     intro: 'Signal Forms make form values and field state signal-oriented. Their exact API and stability depend on the Angular release.',
@@ -427,6 +445,8 @@ const fields = form(model);`,
   {
     id: 'di-lifecycle',
     label: 'DI & lifecycle',
+    release: 'Angular 14+ inject() · Angular 17+ afterNextRender()',
+    milestoneYears: ['17'],
     kicker: '09 / APPLICATION ARCHITECTURE',
     title: 'Use standalone APIs, inject(), and lifecycle cleanup',
     intro: 'Standalone components declare template dependencies locally. inject() resolves services in an injection context, while lifecycle helpers make subscriptions and DOM work easier to own.',
@@ -472,6 +492,8 @@ this.route.paramMap.pipe(
   {
     id: 'ssr-hydration',
     label: 'SSR & hydration',
+    release: 'Angular 16+ hydration · Angular 19+ incremental hydration',
+    milestoneYears: ['17', '19'],
     kicker: '10 / RENDERING',
     title: 'Render on the server and hydrate in the browser',
     intro: 'Server-side rendering sends useful HTML before browser JavaScript runs. Hydration attaches Angular behavior to that markup instead of throwing it away and rebuilding it.',
@@ -514,6 +536,8 @@ afterNextRender(() => {
   {
     id: 'timeline',
     label: 'Version map',
+    release: 'Angular 17–22 overview',
+    milestoneYears: ['17', '18', '19', '20', '21', '22'],
     kicker: '11 / ANGULAR 17–22',
     title: 'Place features in their release context',
     intro: 'Feature availability, stability, and CLI defaults are different things. Verify release notes and migration guidance for the version installed in your project.',

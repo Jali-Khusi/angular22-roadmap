@@ -18,8 +18,8 @@
 			<span>THE MODERN ANGULAR ERA</span>
 		</div>
 		<div class="release-years">
-			@for (year of ['17', '18', '19', '20', '21', '22']; track year; let isLast = $last) {
-				<span [class.current]="isLast">{{ year }}</span>
+			@for (year of ['17', '18', '19', '20', '21', '22']; track year) {
+				<span [class.current]="isVersionHighlighted(year)">{{ year }}</span>
 			}
 		</div>
 	</section>
@@ -64,6 +64,10 @@
 				<span class="eyebrow lesson-kicker">{{ activeTab.kicker }}</span>
 				<h2>{{ activeTab.title }}</h2>
 				<p>{{ activeTab.intro }}</p>
+				<div class="release-label" aria-label="Angular version information">
+					<span class="release-label-mark" aria-hidden="true">↗</span>
+					<span>{{ activeTab.release }}</span>
+				</div>
 			</header>
 
 			<div class="examples-list">
