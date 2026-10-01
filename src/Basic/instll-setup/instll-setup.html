@@ -1,0 +1,157 @@
+<article class="setup-guide">
+	<header class="lesson-heading">
+		<span class="eyebrow">ANGULAR LEARNING PATH / GETTING STARTED</span>
+		<h2>Installation &amp; Setup</h2>
+		<p>Prepare your machine, install Angular's command-line tools, and run your first app locally.</p>
+	</header>
+
+	<nav class="setup-tabs" aria-label="Setup steps" role="tablist">
+		<button
+			id="tab-node"
+			type="button"
+			role="tab"
+			aria-controls="panel-node"
+			[attr.aria-selected]="activeTab() === 'node'"
+			[class.active]="activeTab() === 'node'"
+			(click)="selectTab('node')"
+		>
+			<span class="tab-number">01</span>
+			<span>Node.js setup</span>
+		</button>
+		<button
+			id="tab-cli"
+			type="button"
+			role="tab"
+			aria-controls="panel-cli"
+			[attr.aria-selected]="activeTab() === 'cli'"
+			[class.active]="activeTab() === 'cli'"
+			(click)="selectTab('cli')"
+		>
+			<span class="tab-number">02</span>
+			<span>Angular CLI</span>
+		</button>
+		<button
+			id="tab-project"
+			type="button"
+			role="tab"
+			aria-controls="panel-project"
+			[attr.aria-selected]="activeTab() === 'project'"
+			[class.active]="activeTab() === 'project'"
+			(click)="selectTab('project')"
+		>
+			<span class="tab-number">03</span>
+			<span>Create &amp; run project</span>
+		</button>
+	</nav>
+
+	@if (activeTab() === 'node') {
+		<section id="panel-node" class="lesson-panel" role="tabpanel" aria-labelledby="tab-node">
+			<div class="panel-heading">
+				<span class="step-badge">01</span>
+				<div>
+					<h3>Install Node.js and npm</h3>
+					<p>Angular's tooling runs on Node.js. npm is included with the Node.js installer.</p>
+				</div>
+			</div>
+
+			<ol class="setup-steps">
+				<li>
+					<h4>Download the current LTS release</h4>
+					<p>Open the official <a href="https://nodejs.org/en/download" target="_blank" rel="noopener noreferrer">Node.js download page</a> and choose the LTS installer for Windows, macOS, or Linux. LTS is the stable choice for development.</p>
+				</li>
+				<li>
+					<h4>Run the installer</h4>
+					<p>Use the default installation options and ensure the option to add Node.js to your system PATH remains enabled. On macOS or Linux, follow the installer or package-manager instructions shown on the official page.</p>
+				</li>
+				<li>
+					<h4>Open a new terminal and verify the installation</h4>
+					<p>Close and reopen your terminal so it loads the updated PATH, then check both versions:</p>
+					<pre><code>node --version
+npm --version</code></pre>
+				</li>
+			</ol>
+
+			<aside class="tip-note">
+				<strong>Expected result</strong>
+				<span>Both commands print a version number. If either command is not recognized, reopen the terminal or rerun the installer with PATH enabled.</span>
+			</aside>
+
+			<p class="next-hint">Node.js and npm are ready. Continue to <button type="button" class="inline-tab" (click)="selectTab('cli')">Angular CLI <span aria-hidden="true">→</span></button></p>
+		</section>
+	}
+
+	@if (activeTab() === 'cli') {
+		<section id="panel-cli" class="lesson-panel" role="tabpanel" aria-labelledby="tab-cli">
+			<div class="panel-heading">
+				<span class="step-badge">02</span>
+				<div>
+					<h3>Install Angular CLI</h3>
+					<p>The CLI scaffolds projects and provides commands for development and builds.</p>
+				</div>
+			</div>
+
+			<ol class="setup-steps">
+				<li>
+					<h4>Install the CLI globally</h4>
+					<p>Run this in a terminal. The <code>-g</code> option makes the <code>ng</code> command available from any folder.</p>
+					<pre><code>npm install --global @angular/cli</code></pre>
+				</li>
+				<li>
+					<h4>Confirm the CLI is available</h4>
+					<pre><code>ng version</code></pre>
+					<p>The output lists the Angular CLI, Node.js, and npm versions. If your terminal cannot find <code>ng</code>, reopen it and check that npm's global executable folder is on your PATH.</p>
+				</li>
+				<li>
+					<h4>Update the CLI when needed</h4>
+					<p>Use npm to install the latest CLI version when you choose to upgrade:</p>
+					<pre><code>npm install --global @angular/cli&#64;latest</code></pre>
+				</li>
+			</ol>
+
+			<aside class="tip-note">
+				<strong>Permission errors?</strong>
+				<span>On Windows, use a regular terminal with your normal user account first. Avoid mixing elevated and non-elevated npm installs; use the official npm guidance if your system requires a different global package setup.</span>
+			</aside>
+
+			<p class="next-hint">CLI installed. Continue to <button type="button" class="inline-tab" (click)="selectTab('project')">create your project <span aria-hidden="true">→</span></button></p>
+		</section>
+	}
+
+	@if (activeTab() === 'project') {
+		<section id="panel-project" class="lesson-panel" role="tabpanel" aria-labelledby="tab-project">
+			<div class="panel-heading">
+				<span class="step-badge">03</span>
+				<div>
+					<h3>Create and run an Angular project</h3>
+					<p>Use the CLI to generate a project, install its dependencies, and start the local dev server.</p>
+				</div>
+			</div>
+
+			<ol class="setup-steps">
+				<li>
+					<h4>Generate a new project</h4>
+					<p>Move to the folder where you keep your code, then run:</p>
+					<pre><code>ng new my-angular-app</code></pre>
+					<p>Answer the prompts. Choose routing if you want page navigation, and select CSS or SCSS for your stylesheet format.</p>
+				</li>
+				<li>
+					<h4>Enter the project folder</h4>
+					<pre><code>cd my-angular-app</code></pre>
+					<p>The CLI installs the project dependencies when it creates the app. If installation was skipped or failed, run <code>npm install</code> here.</p>
+				</li>
+				<li>
+					<h4>Start the development server</h4>
+					<pre><code>ng serve --open</code></pre>
+					<p>This compiles the app and opens it in your browser, usually at <code>http://localhost:4200/</code>. Keep the terminal running while you work; edits trigger a rebuild.</p>
+				</li>
+			</ol>
+
+			<aside class="tip-note success-note">
+				<strong>Your first app is running</strong>
+				<span>To stop the server, focus its terminal and press Ctrl+C. Start it again later from the project folder with <code>ng serve</code>.</span>
+			</aside>
+
+			<p class="next-hint">The project is ready for development. The next lesson is <strong>Components</strong>.</p>
+		</section>
+	}
+</article>

@@ -1,0 +1,345 @@
+.topic-guide {
+  --ink: #25262c;
+  --muted: #7b7d86;
+  --line: #e9e9ee;
+  --angular-blue: #3178c6;
+
+  color: var(--ink);
+}
+
+.lesson-heading {
+  margin-bottom: 1.5rem;
+
+  .eyebrow {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0.4rem;
+    font-size: 1.65rem;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  p {
+    max-width: 660px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+}
+
+.foundations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid #e9e9ee;
+  border-radius: 10px;
+  background: #fff;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    color: #25262c;
+    font-size: 0.84rem;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding-left: 1.1rem;
+    color: #62646d;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+}
+
+.foundations-mistakes h3 {
+  color: #8b3d70;
+}
+
+.lesson-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+
+    &:hover {
+      color: var(--ink);
+      background: #f7f8fc;
+    }
+
+    &.active {
+      border-color: #d9e8f7;
+      background: #eef5fc;
+      color: #245f9e;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgb(49 120 198 / 30%);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.tab-number {
+  flex: 0 0 auto;
+  color: #9a9ca5;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.active .tab-number {
+  color: var(--angular-blue);
+}
+
+.lesson-panel {
+  padding: clamp(1.15rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgb(37 38 44 / 4%);
+  animation: lesson-enter 180ms ease-out;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f0f0f3;
+
+  h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+}
+
+.step-badge {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 10px;
+  background: #eef5fc;
+  color: var(--angular-blue);
+  font-size: 0.77rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.lesson-steps {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.35rem 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: lesson-step;
+
+  li {
+    position: relative;
+    padding-left: 2.3rem;
+    color: #62646d;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    counter-increment: lesson-step;
+
+    &::before {
+      position: absolute;
+      top: 0.05rem;
+      left: 0;
+      display: grid;
+      width: 1.55rem;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--muted);
+      content: counter(lesson-step);
+      font-size: 0.72rem;
+      font-weight: 750;
+    }
+  }
+}
+
+.learning-block {
+  margin: 1.2rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #e9e9ee;
+  border-radius: 8px;
+  background: #fbfbfd;
+
+  h4 {
+    margin: 0 0 0.55rem;
+    color: #25262c;
+    font-size: 0.88rem;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #62646d;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+}
+
+pre {
+  overflow-x: auto;
+  margin: 0.7rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e5e7ed;
+  border-left: 3px solid var(--angular-blue);
+  border-radius: 7px;
+  background: #f7f8fc;
+  color: #25262c;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  tab-size: 2;
+
+  code {
+    font-family: Consolas, 'Courier New', monospace;
+    white-space: pre-wrap;
+  }
+}
+
+.lesson-note {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #d6a900;
+  border-radius: 0 7px 7px 0;
+  background: #fffaf0;
+  color: #6f5b1d;
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  strong {
+    color: #4d401a;
+  }
+}
+
+.mistake-note,
+.exercise-note {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.8rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #b7178c;
+  border-radius: 0 7px 7px 0;
+  background: #fcf4fa;
+  color: #65505f;
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  strong {
+    color: #573749;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+}
+
+.exercise-note {
+  border-left-color: #3178c6;
+  background: #f1f7fd;
+  color: #4d6176;
+
+  strong {
+    color: #245f9e;
+  }
+}
+
+.next-hint {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.inline-tab {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #245f9e;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--angular-blue);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes lesson-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 620px) {
+  .lesson-heading h2 { font-size: 1.4rem; }
+
+  .foundations { grid-template-columns: 1fr; }
+
+  .lesson-tabs {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+
+    button {
+      justify-content: flex-start;
+      min-height: 42px;
+    }
+  }
+
+  .panel-heading h3 { font-size: 1.02rem; }
+}

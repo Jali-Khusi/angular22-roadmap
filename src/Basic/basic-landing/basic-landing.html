@@ -1,0 +1,354 @@
+
+<div class="basic-landing">
+
+
+  <!-- =====================================================
+       STATE 1
+       NO TOPIC SELECTED
+       SHOW ALL CARDS
+  ====================================================== -->
+
+  @if (!selectedTopic()) {
+
+    <section class="topics-view">
+
+      <!-- Header -->
+      <div class="page-header">
+
+        <div class="header-content">
+
+          <span class="eyebrow">
+            ANGULAR LEARNING PATH
+          </span>
+
+          <h1>
+            Basic Angular
+          </h1>
+
+          <p>
+            Build a strong Angular foundation from project setup
+            to API integration with practical concepts.
+          </p>
+
+        </div>
+
+
+        <div class="topic-summary">
+
+          <span class="topic-number">
+            {{ basicAngular.length }}
+          </span>
+
+          <span class="topic-label">
+            Topics
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- All Cards -->
+      <div class="topic-grid">
+
+        @for (topic of basicAngular; track topic.id) {
+
+          <a
+            class="topic-card"
+            [style.--topic-color]="topic.color"
+            [routerLink]="['/basic', topic.link]"
+          >
+
+            <!-- Glow -->
+            <div class="card-glow"></div>
+
+
+            <!-- Top -->
+            <div class="card-top">
+
+              <span class="topic-index">
+
+                {{ topic.id < 10 ? '0' + topic.id : topic.id }}
+
+              </span>
+
+              <span class="topic-arrow">
+                ↗
+              </span>
+
+            </div>
+
+
+            <!-- Icon -->
+            <!-- <div class="topic-icon">
+
+              <span>
+                {{ topic.icon }}
+              </span>
+
+            </div> -->
+
+
+            <!-- Content -->
+            <div class="topic-content">
+
+              <h2>
+                {{ topic.name }}
+              </h2>
+
+              <p>
+                {{ topic.description }}
+              </p>
+
+            </div>
+
+
+            <!-- Footer -->
+            <div class="card-bottom">
+
+              <span class="explore-text">
+                Explore topic
+              </span>
+
+              <span class="explore-arrow">
+                →
+              </span>
+
+            </div>
+
+          </a>
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+
+  <!-- =====================================================
+       STATE 2
+       TOPIC SELECTED
+       LEFT = TOPICS
+       RIGHT = CONTENT
+  ====================================================== -->
+
+  @else {
+
+    <section class="learning-view">
+
+
+      <!-- =================================================
+           LEFT SIDE - COL 3
+      ================================================== -->
+
+      <aside class="topic-sidebar">
+
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+
+          <button
+            type="button"
+            class="back-button"
+            (click)="showAllTopics()"
+          >
+            ←
+            <span>All Topics</span>
+          </button>
+
+
+          <div class="sidebar-title">
+
+            <span class="eyebrow">
+              BASIC ANGULAR
+            </span>
+
+            <h2>
+              Topics
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <!-- Scrollable Topics -->
+        <div class="sidebar-scroll">
+
+          @for (topic of basicAngular; track topic.id) {
+
+            <a
+              class="sidebar-topic"
+              [class.active]="selectedTopic()?.id === topic.id"
+              [style.--topic-color]="topic.color"
+              [routerLink]="['/basic', topic.link]"
+            >
+
+              <span class="sidebar-topic-number">
+
+                {{ topic.id < 10 ? '0' + topic.id : topic.id }}
+
+              </span>
+
+
+              <span class="sidebar-topic-icon">
+                {{ topic.icon }}
+              </span>
+
+
+              <span class="sidebar-topic-name">
+                {{ topic.name }}
+              </span>
+
+
+              <span class="sidebar-topic-arrow">
+                →
+              </span>
+
+            </a>
+
+          }
+
+        </div>
+
+      </aside>
+
+
+      <!-- =================================================
+           RIGHT SIDE - COL 9
+      ================================================== -->
+
+      <main class="topic-content-area">
+
+        <!-- Content Header -->
+        <div
+          class="content-header"
+          [style.--topic-color]="selectedTopic()!.color"
+        >
+
+          <div class="content-header-left">
+
+            <span class="content-number">
+
+              {{
+                selectedTopic()!.id < 10
+                  ? '0' + selectedTopic()!.id
+                  : selectedTopic()!.id
+              }}
+
+            </span>
+
+
+            <div>
+
+              <span class="content-eyebrow">
+                BASIC ANGULAR
+              </span>
+
+              <h1>
+                {{ selectedTopic()!.name }}
+              </h1>
+
+              <p>
+                {{ selectedTopic()!.description }}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SELECTED COMPONENT
+        ================================================== -->
+
+        <div class="topic-component">
+
+          @switch (selectedTopic()!.link) {
+
+            @case ('installation') {
+
+              <app-instll-setup />
+
+            }
+
+            @case ('component') {
+
+              <app-component-g />
+
+            }
+
+            @case ('data-binding') {
+
+              <app-data-binding />
+
+            }
+
+            @case ('routing') {
+
+              <app-routing />
+
+            }
+
+            @case ('directives') {
+
+              <app-directives />
+
+            }
+
+            @case ('control-flow') {
+
+              <app-contrl-flow />
+
+            }
+
+            @case ('signals') {
+
+              <app-signal />
+
+            }
+
+            @case ('template-form') {
+
+              <app-template-driven-form />
+
+            }
+
+            @case ('reactive-form') {
+
+              <app-reactive-form />
+
+            }
+
+            @case ('signal-form') {
+
+              <app-signal-form />
+
+            }
+
+            @case ('api-integration') {
+
+              <app-api-integration />
+
+            }
+
+            @case ('services-guards-interceptors') {
+
+              <app-guard-service-interceptor />
+
+            }
+
+          }
+
+        </div>
+
+      </main>
+
+    </section>
+
+  }
+
+</div>

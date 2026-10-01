@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+	min-height: 100%;
+	margin: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f5f7f3;
+	color: #24332f;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}

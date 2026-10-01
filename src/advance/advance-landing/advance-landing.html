@@ -1,0 +1,450 @@
+<div class="basic-landing">
+
+  <!-- =====================================================
+       STATE 1
+       NO TOPIC SELECTED
+
+       SHOW ALL CARDS
+  ====================================================== -->
+
+  @if (!selectedTopic()) {
+
+    <section class="topics-view">
+
+      <!-- =================================================
+           HEADER
+      ================================================== -->
+
+      <div class="page-header">
+
+        <div class="header-content">
+
+          <span class="eyebrow">
+            ANGULAR ADVANCED LEARNING PATH
+          </span>
+
+          <h1>
+            Advanced Angular
+          </h1>
+
+          <p>
+            Go beyond Angular fundamentals and build practical
+            authentication, component communication, directives,
+            templates and RxJS concepts.
+          </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC COUNT
+        ================================================== -->
+
+        <div class="topic-summary">
+
+          <span class="topic-number">
+            {{ advanceAngular.length }}
+          </span>
+
+          <span class="topic-label">
+            Topics
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           ALL TOPIC CARDS
+      ================================================== -->
+
+      <div class="topic-grid">
+
+        @for (topic of advanceAngular; track topic.id) {
+
+          <a
+            class="topic-card"
+
+            [style.--topic-color]="topic.color"
+
+            [routerLink]="['/advance', topic.link]"
+          >
+
+            <!-- =================================================
+                 GLOW
+            ================================================= -->
+
+            <div class="card-glow"></div>
+
+
+            <!-- =================================================
+                 TOP
+            ================================================= -->
+
+            <div class="card-top">
+
+              <span class="topic-index">
+
+                {{
+                  topic.id < 10
+                    ? '0' + topic.id
+                    : topic.id
+                }}
+
+              </span>
+
+
+              <span class="topic-arrow">
+                ↗
+              </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONTENT
+            ================================================= -->
+
+            <div class="topic-content">
+
+              <h2>
+                {{ topic.name }}
+              </h2>
+
+              <p>
+                {{ topic.description }}
+              </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================= -->
+
+            <div class="card-bottom">
+
+              <span class="explore-text">
+                Explore topic
+              </span>
+
+              <span class="explore-arrow">
+                →
+              </span>
+
+            </div>
+
+          </a>
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+
+  <!-- =====================================================
+       STATE 2
+
+       TOPIC SELECTED
+
+       LEFT  = TOPICS
+       RIGHT = CONTENT
+  ====================================================== -->
+
+  @else {
+
+    <section class="learning-view">
+
+
+      <!-- =================================================
+           LEFT SIDE
+           TOPIC SIDEBAR
+      ================================================== -->
+
+      <aside class="topic-sidebar">
+
+
+        <!-- =================================================
+             SIDEBAR HEADER
+        ================================================== -->
+
+        <div class="sidebar-header">
+
+          <button
+            type="button"
+
+            class="back-button"
+
+            (click)="showAllTopics()"
+          >
+
+            ←
+
+            <span>
+              All Topics
+            </span>
+
+          </button>
+
+
+          <div class="sidebar-title">
+
+            <span class="eyebrow">
+              ADVANCED ANGULAR
+            </span>
+
+            <h2>
+              Topics
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SCROLLABLE TOPICS
+        ================================================== -->
+
+        <div class="sidebar-scroll">
+
+          @for (topic of advanceAngular; track topic.id) {
+
+            <a
+              class="sidebar-topic"
+
+              [class.active]="
+                selectedTopic()?.id === topic.id
+              "
+
+              [style.--topic-color]="topic.color"
+
+              [routerLink]="['/advance', topic.link]"
+            >
+
+              <!-- NUMBER -->
+
+              <span class="sidebar-topic-number">
+
+                {{
+                  topic.id < 10
+                    ? '0' + topic.id
+                    : topic.id
+                }}
+
+              </span>
+
+
+              <!-- ICON -->
+
+              <span class="sidebar-topic-icon">
+
+                {{ topic.icon }}
+
+              </span>
+
+
+              <!-- NAME -->
+
+              <span class="sidebar-topic-name">
+
+                {{ topic.name }}
+
+              </span>
+
+
+              <!-- ARROW -->
+
+              <span class="sidebar-topic-arrow">
+
+                →
+
+              </span>
+
+            </a>
+
+          }
+
+        </div>
+
+      </aside>
+
+
+      <!-- =================================================
+           RIGHT SIDE
+           CONTENT
+      ================================================== -->
+
+      <main class="topic-content-area">
+
+
+        <!-- =================================================
+             CONTENT HEADER
+        ================================================== -->
+
+        <div
+          class="content-header"
+
+          [style.--topic-color]="
+            selectedTopic()!.color
+          "
+        >
+
+          <div class="content-header-left">
+
+
+            <!-- NUMBER -->
+
+            <span class="content-number">
+
+              {{
+                selectedTopic()!.id < 10
+                  ? '0' + selectedTopic()!.id
+                  : selectedTopic()!.id
+              }}
+
+            </span>
+
+
+            <!-- TITLE -->
+
+            <div>
+
+              <span class="content-eyebrow">
+
+                ADVANCED ANGULAR
+
+              </span>
+
+
+              <h1>
+
+                {{ selectedTopic()!.name }}
+
+              </h1>
+
+
+              <p>
+
+                {{ selectedTopic()!.description }}
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SELECTED COMPONENT
+        ================================================== -->
+
+        <div class="topic-component">
+
+          @switch (selectedTopic()!.link) {
+
+
+            <!-- =================================================
+                 1. LOGIN WITH HARDCODED DATA
+            ================================================== -->
+
+            @case ('login-hardcode') {
+
+              <app-login-hardcode />
+
+            }
+
+
+            <!-- =================================================
+                 2. LOGIN WITH API
+            ================================================== -->
+
+            @case ('login-api') {
+
+              <app-login-api />
+
+            }
+
+
+            <!-- =================================================
+                 3. LOGIN WITH API + JWT + INTERCEPTOR
+            ================================================== -->
+
+            @case ('login-jwt') {
+
+              <app-login-jwt />
+
+            }
+
+
+            <!-- =================================================
+                 4. VIEW CHILD
+            ================================================== -->
+
+            @case ('view-child') {
+
+              <app-view-child />
+
+            }
+
+
+            <!-- =================================================
+                 5. REUSABLE COMPONENT
+            ================================================== -->
+
+            @case ('reusable-component') {
+
+              <app-reusable-component />
+
+            }
+
+
+            <!-- =================================================
+                 6. CUSTOM DIRECTIVE
+            ================================================== -->
+
+            @case ('custom-directive') {
+
+              <app-custom-directive />
+
+            }
+
+
+            <!-- =================================================
+                 7. TEMPLATE / CONTENT PROJECTION
+            ================================================== -->
+
+            @case ('template-content') {
+
+              <app-template-content />
+
+            }
+
+
+            <!-- =================================================
+                 8. SUBJECT + BEHAVIOR SUBJECT
+            ================================================== -->
+
+            @case ('subject-behavior') {
+
+              <app-subject-behavior />
+
+            }
+
+          }
+
+        </div>
+
+      </main>
+
+    </section>
+
+  }
+
+</div>

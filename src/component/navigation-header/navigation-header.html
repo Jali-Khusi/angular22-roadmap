@@ -1,0 +1,31 @@
+<header class="site-header">
+	<a class="brand" routerLink="/basic" aria-label="Angular Tutorial home">
+		<span class="brand-mark" aria-hidden="true">A</span>
+		<span class="brand-copy">
+			<span class="brand-eyebrow">LEARNING PATH</span>
+			<span class="brand-title">Angular Tutorial</span>
+			<span class="brand-subtitle">Basic to Advanced</span>
+		</span>
+	</a>
+
+	<nav class="track-nav" aria-label="Tutorial track">
+		<a
+			routerLink="/basic"
+			routerLinkActive="is-active"
+			ariaCurrentWhenActive="page"
+		><span class="track-index">01</span>Basic</a>
+		<a
+			routerLink="/advance"
+			routerLinkActive="is-active"
+			[routerLinkActiveOptions]="{ exact: true }"
+			ariaCurrentWhenActive="page"
+		><span class="track-index">02</span>Advance</a><a
+			routerLink="/angular17-22"
+			routerLinkActive="is-active"
+			[routerLinkActiveOptions]="{ exact: true }"
+			ariaCurrentWhenActive="page"
+		><span class="track-index">02</span>angular17-22</a>
+
+        
+	</nav>
+</header>

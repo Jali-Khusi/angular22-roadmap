@@ -1,0 +1,113 @@
+<main class="version-learning-page">
+	<header class="page-intro">
+		<div class="intro-copy">
+			<span class="eyebrow">ANGULAR LEARNING PATH / MODERN ANGULAR</span>
+			<h1>Angular 17<span> to </span>22</h1>
+			<p>Understand the modern Angular platform through the features that changed how we build templates, state, routes, and async experiences.</p>
+		</div>
+		<div class="release-stamp" aria-label="Angular 17 to 22">
+			<strong>17–22</strong>
+			<span>RELEASES</span>
+			<i aria-hidden="true"></i>
+		</div>
+	</header>
+
+	<section class="release-track" aria-label="Angular release range">
+		<div class="track-label">
+			<span class="track-rule"></span>
+			<span>THE MODERN ANGULAR ERA</span>
+		</div>
+		<div class="release-years">
+			@for (year of ['17', '18', '19', '20', '21', '22']; track year; let isLast = $last) {
+				<span [class.current]="isLast">{{ year }}</span>
+			}
+		</div>
+	</section>
+
+	<section class="learning-layout">
+		<aside class="topic-navigation" aria-label="Angular topics">
+			<div class="nav-heading">
+				<span class="eyebrow">FIELD GUIDE</span>
+				<span class="topic-count">{{ tabs.length }} TOPICS</span>
+			</div>
+			<nav class="topic-tabs" role="tablist" aria-label="Angular feature topics" aria-orientation="vertical">
+				@for (tab of tabs; track tab.id; let index = $index) {
+					<button
+						type="button"
+						role="tab"
+						[id]="'feature-tab-' + tab.id"
+						[attr.aria-controls]="'feature-panel-' + tab.id"
+						[attr.aria-selected]="isActive(tab.id)"
+						[class.active]="isActive(tab.id)"
+						(click)="selectTab(tab.id)"
+					>
+						<span class="tab-index">{{ (index + 1).toString().padStart(2, '0') }}</span>
+						<span class="tab-label">{{ tab.label }}</span>
+						<span class="tab-arrow" aria-hidden="true">↗</span>
+					</button>
+				}
+			</nav>
+			<div class="sidebar-note">
+				<span class="note-mark" aria-hidden="true">i</span>
+				<p>API stability can vary by Angular release. Check the version map before adopting preview features.</p>
+			</div>
+		</aside>
+
+		<article
+			class="lesson-content"
+			role="tabpanel"
+			[id]="'feature-panel-' + activeTab.id"
+			[attr.aria-labelledby]="'feature-tab-' + activeTab.id"
+			[attr.aria-label]="activeTab.title"
+		>
+			<header class="lesson-header">
+				<span class="eyebrow lesson-kicker">{{ activeTab.kicker }}</span>
+				<h2>{{ activeTab.title }}</h2>
+				<p>{{ activeTab.intro }}</p>
+			</header>
+
+			<div class="examples-list">
+				@for (example of activeTab.examples; track example.title; let index = $index) {
+					<section class="example-section">
+						<div class="example-heading">
+							<span class="example-index">{{ (index + 1).toString().padStart(2, '0') }}</span>
+							<div>
+								<h3>{{ example.title }}</h3>
+								<p>{{ example.explanation }}</p>
+							</div>
+						</div>
+						<pre><code>{{ example.code }}</code></pre>
+						@if (example.note) {
+							<p class="example-note"><strong>Keep in mind</strong>{{ example.note }}</p>
+						}
+					</section>
+				}
+			</div>
+
+			<footer class="lesson-footer">
+				<div class="takeaway-block">
+					<span class="footer-label"><span aria-hidden="true">+</span> KEY IDEA</span>
+					<p>{{ activeTab.takeaway }}</p>
+				</div>
+				<div class="exercise-block">
+					<span class="footer-label"><span aria-hidden="true">↗</span> TRY IT</span>
+					<p>{{ activeTab.exercise }}</p>
+				</div>
+			</footer>
+
+			<nav class="lesson-pager" aria-label="Move between topics">
+				<button
+					type="button"
+					[disabled]="activeIndex === 0"
+					(click)="selectRelativeTab(-1)"
+				>← Previous topic</button>
+				<span>{{ (activeIndex + 1).toString().padStart(2, '0') }} / {{ tabs.length.toString().padStart(2, '0') }}</span>
+				<button
+					type="button"
+					[disabled]="activeIndex === tabs.length - 1"
+					(click)="selectRelativeTab(1)"
+				>Next topic →</button>
+			</nav>
+		</article>
+	</section>
+</main>

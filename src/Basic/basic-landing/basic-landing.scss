@@ -1,0 +1,1022 @@
+/* =========================================================
+   BASIC LANDING
+========================================================= */
+
+.basic-landing {
+  width: 100%;
+  min-height: 100%;
+  padding:9px;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(49, 120, 198, 0.07),
+      transparent 28%
+    ),
+    #f7f8fc;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.eyebrow {
+  display: inline-block;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+
+  color: #7b7d86;
+}
+
+
+/* =========================================================
+   STATE 1
+   ALL TOPICS
+========================================================= */
+
+.topics-view {
+  width: 100%;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  margin-bottom: 24px;
+  padding: 26px 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #ececf1;
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 24px rgba(37, 38, 44, 0.04);
+}
+
+
+.header-content {
+  min-width: 0;
+
+  h1 {
+    margin: 5px 0 6px;
+
+    font-size: 29px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+
+    color: #25262c;
+  }
+
+  p {
+    max-width: 650px;
+
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: #7b7d86;
+  }
+}
+
+
+/* =========================================================
+   TOPIC SUMMARY
+========================================================= */
+
+.topic-summary {
+  width: 82px;
+  height: 82px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #25262c;
+
+  box-shadow:
+    0 8px 20px rgba(37, 38, 44, 0.13);
+}
+
+
+.topic-number {
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 800;
+
+  color: #ffffff;
+}
+
+
+.topic-label {
+  margin-top: 5px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  color: #a9abb4;
+}
+
+
+/* =========================================================
+   TOPIC GRID
+========================================================= */
+
+.topic-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 17px;
+}
+
+
+/* =========================================================
+   TOPIC CARD
+========================================================= */
+
+.topic-card {
+  --topic-color: #3178c6;
+
+  position: relative;
+
+  min-width: 0;
+  min-height: 205px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e9e9ee;
+  border-radius: 16px;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 4px 18px rgba(37, 38, 44, 0.035);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+
+  cursor: pointer;
+
+
+  &:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--topic-color);
+
+    box-shadow:
+      0 12px 28px rgba(37, 38, 44, 0.09);
+
+
+    .card-glow {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+
+    .topic-arrow {
+      color: #ffffff;
+      background: var(--topic-color);
+
+      transform: rotate(0deg);
+    }
+
+
+    .topic-icon {
+      color: #ffffff;
+      background: var(--topic-color);
+
+      transform: translateY(-2px);
+    }
+
+
+    .explore-arrow {
+      color: var(--topic-color);
+
+      transform: translateX(4px);
+    }
+  }
+}
+
+
+/* =========================================================
+   CARD GLOW
+========================================================= */
+
+.card-glow {
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  top: -90px;
+  right: -65px;
+
+  border-radius: 50%;
+
+  background: var(--topic-color);
+
+  opacity: 0.055;
+
+  transform: scale(0.8);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.card-top {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.topic-index {
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  color: var(--topic-color);
+}
+
+
+.topic-arrow {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f4f4f6;
+  color: #7b7d86;
+
+  font-size: 16px;
+
+  transform: rotate(-20deg);
+
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.topic-icon {
+  position: relative;
+  z-index: 1;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+
+  border-radius: 13px;
+
+  background: rgba(49, 120, 198, 0.08);
+
+  color: var(--topic-color);
+
+  font-size: 21px;
+  font-weight: 700;
+
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.topic-content {
+  position: relative;
+  z-index: 1;
+
+  flex: 1;
+
+  margin-top: 14px;
+
+
+  h2 {
+    margin: 0 0 6px;
+
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 700;
+
+    color: #25262c;
+  }
+
+
+  p {
+    max-width: 340px;
+
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: #7b7d86;
+  }
+}
+
+
+/* =========================================================
+   CARD BOTTOM
+========================================================= */
+
+.card-bottom {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 16px;
+  padding-top: 12px;
+
+  border-top: 1px solid #f0f0f3;
+}
+
+
+.explore-text {
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  color: #7b7d86;
+}
+
+
+.explore-arrow {
+  font-size: 18px;
+  line-height: 1;
+
+  color: #b4b5bc;
+
+  transition:
+    transform 0.22s ease,
+    color 0.22s ease;
+}
+
+
+/* =========================================================
+   STATE 2
+   SIDEBAR + CONTENT
+========================================================= */
+
+.learning-view {
+  width: 100%;
+
+  height: calc(100vh - 105px);
+
+  min-height: 500px;
+
+  display: grid;
+
+  grid-template-columns: 280px minmax(0, 1fr);
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e8e8ed;
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 30px rgba(37, 38, 44, 0.05);
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.topic-sidebar {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-right: 1px solid #ededf1;
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+========================================================= */
+
+.sidebar-header {
+  flex-shrink: 0;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #eeeeF2;
+}
+
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 18px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #7b7d86;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+
+
+  &:hover {
+    color: #25262c;
+  }
+}
+
+
+.back-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+.sidebar-title {
+
+  h2 {
+    margin: 4px 0 0;
+
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 800;
+
+    color: #25262c;
+  }
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLL
+========================================================= */
+
+.sidebar-scroll {
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 10px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #d7d7dc transparent;
+}
+
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #d7d7dc;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   SIDEBAR TOPIC
+========================================================= */
+
+.sidebar-topic {
+  --topic-color: #3178c6;
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 28px 30px minmax(0, 1fr) 18px;
+
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 52px;
+
+  margin-bottom: 4px;
+  padding: 7px 9px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: transparent;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+
+  &:hover {
+    background: #f7f7fa;
+
+    .sidebar-topic-arrow {
+      color: var(--topic-color);
+      transform: translateX(2px);
+    }
+  }
+
+
+  &.active {
+    background: rgba(49, 120, 198, 0.07);
+
+    border-color: rgba(49, 120, 198, 0.13);
+
+
+    .sidebar-topic-number {
+      color: var(--topic-color);
+    }
+
+
+    .sidebar-topic-icon {
+      color: #ffffff;
+      background: var(--topic-color);
+    }
+
+
+    .sidebar-topic-name {
+      color: #25262c;
+      font-weight: 700;
+    }
+
+
+    .sidebar-topic-arrow {
+      color: var(--topic-color);
+    }
+
+
+    &::before {
+      content: '';
+
+      position: absolute;
+
+      left: -1px;
+      top: 9px;
+      bottom: 9px;
+
+      width: 3px;
+
+      border-radius: 0 4px 4px 0;
+
+      background: var(--topic-color);
+    }
+  }
+}
+
+
+/* =========================================================
+   SIDEBAR NUMBER
+========================================================= */
+
+.sidebar-topic-number {
+  font-size: 9px;
+  font-weight: 800;
+
+  color: #aaaab2;
+}
+
+
+/* =========================================================
+   SIDEBAR ICON
+========================================================= */
+
+.sidebar-topic-icon {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f3f3f6;
+
+  color: #85868f;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR NAME
+========================================================= */
+
+.sidebar-topic-name {
+  min-width: 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #686a73;
+}
+
+
+/* =========================================================
+   SIDEBAR ARROW
+========================================================= */
+
+.sidebar-topic-arrow {
+  font-size: 14px;
+
+  color: #b6b7bd;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.topic-content-area {
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #f8f9fb;
+}
+
+
+/* =========================================================
+   CONTENT HEADER
+========================================================= */
+
+.content-header {
+  --topic-color: #3178c6;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  padding: 22px 26px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e9e9ee;
+
+  overflow: hidden;
+
+
+  &::after {
+    content: '';
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -110px;
+    right: -50px;
+
+    border-radius: 50%;
+
+    background: var(--topic-color);
+
+    opacity: 0.06;
+  }
+}
+
+
+/* =========================================================
+   CONTENT HEADER LEFT
+========================================================= */
+
+.content-header-left {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   CONTENT NUMBER
+========================================================= */
+
+.content-number {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: var(--topic-color);
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  box-shadow:
+    0 7px 16px rgba(37, 38, 44, 0.10);
+}
+
+
+/* =========================================================
+   CONTENT TEXT
+========================================================= */
+
+.content-eyebrow {
+  display: block;
+
+  margin-bottom: 3px;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.1px;
+
+  color: #9697a0;
+}
+
+
+.content-header h1 {
+  margin: 0 0 3px;
+
+  font-size: 23px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  color: #25262c;
+}
+
+
+.content-header p {
+  margin: 0;
+
+  max-width: 700px;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: #7b7d86;
+}
+
+
+/* =========================================================
+   SELECTED COMPONENT AREA
+========================================================= */
+
+.topic-component {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: 24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #d7d7dc transparent;
+}
+
+
+.topic-component::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.topic-component::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.topic-component::-webkit-scrollbar-thumb {
+  background: #d7d7dc;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .topic-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .learning-view {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .basic-landing {
+    padding: 20px;
+  }
+
+
+  .page-header {
+    align-items: flex-start;
+
+    padding: 22px;
+  }
+
+
+  .topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .learning-view {
+    height: auto;
+    min-height: calc(100vh - 80px);
+
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .basic-landing {
+    padding: 15px;
+  }
+
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+
+  .topic-summary {
+    width: 70px;
+    height: 70px;
+  }
+
+
+  .topic-number {
+    font-size: 22px;
+  }
+
+
+  .learning-view {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    min-height: calc(100vh - 70px);
+  }
+
+
+  .topic-sidebar {
+    max-height: 260px;
+
+    border-right: 0;
+    border-bottom: 1px solid #ededf1;
+  }
+
+
+  .sidebar-header {
+    padding: 15px;
+  }
+
+
+  .sidebar-scroll {
+    padding: 8px;
+  }
+
+
+  .topic-content-area {
+    min-height: 600px;
+  }
+
+
+  .content-header {
+    padding: 18px;
+  }
+
+
+  .topic-component {
+    padding: 18px;
+  }
+
+}

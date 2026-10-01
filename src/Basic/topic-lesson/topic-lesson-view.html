@@ -1,0 +1,126 @@
+<article class="topic-guide">
+  <header class="lesson-heading">
+    <span class="eyebrow">{{ lesson().eyebrow }}</span>
+    <h2>{{ lesson().title }}</h2>
+    <p>{{ lesson().intro }}</p>
+  </header>
+
+  @if (lesson().foundations?.length) {
+    <section class="foundations">
+      <div>
+        <h3>Core ideas</h3>
+        <ul>
+          @for (idea of lesson().foundations; track $index) {
+            <li>{{ idea }}</li>
+          }
+        </ul>
+      </div>
+      @if (lesson().commonMistakes?.length) {
+        <div class="foundations-mistakes">
+          <h3>Watch for these</h3>
+          <ul>
+            @for (mistake of lesson().commonMistakes; track $index) {
+              <li>{{ mistake }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </section>
+  }
+
+  <nav class="lesson-tabs" aria-label="Lesson sections" role="tablist">
+    @for (tab of lesson().tabs; track tab.id) {
+      <button
+        type="button"
+        role="tab"
+        [id]="'lesson-tab-' + tab.id"
+        [attr.aria-controls]="'lesson-panel-' + tab.id"
+        [attr.aria-selected]="isActive(tab.id)"
+        [class.active]="isActive(tab.id)"
+        (click)="selectTab(tab.id)"
+      >
+        <span class="tab-number">{{ (lesson().tabs.indexOf(tab) + 1).toString().padStart(2, '0') }}</span>
+        <span>{{ tab.label }}</span>
+      </button>
+    }
+  </nav>
+
+  @if (activeTab(); as tab) {
+    <section
+      class="lesson-panel"
+      role="tabpanel"
+      [id]="'lesson-panel-' + tab.id"
+      [attr.aria-labelledby]="'lesson-tab-' + tab.id"
+    >
+      <div class="panel-heading">
+        <span class="step-badge">{{ (lesson().tabs.indexOf(tab) + 1).toString().padStart(2, '0') }}</span>
+        <div>
+          <h3>{{ tab.heading }}</h3>
+          <p>{{ tab.summary }}</p>
+        </div>
+      </div>
+
+      <ol class="lesson-steps">
+        @for (step of tab.steps; track $index) {
+          <li>{{ step }}</li>
+        }
+      </ol>
+
+      @if (tab.concepts?.length) {
+        <section class="learning-block">
+          <h4>Understand the concept</h4>
+          <ul>
+            @for (concept of tab.concepts; track $index) {
+              <li>{{ concept }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (tab.code) {
+        <pre><code>{{ tab.code }}</code></pre>
+      }
+
+      @if (tab.commonMistakes?.length) {
+        <aside class="mistake-note">
+          <strong>Common mistakes</strong>
+          <ul>
+            @for (mistake of tab.commonMistakes; track $index) {
+              <li>{{ mistake }}</li>
+            }
+          </ul>
+        </aside>
+      }
+
+      @if (tab.note) {
+        <aside class="lesson-note">
+          <strong>Remember</strong>
+          <span>{{ tab.note }}</span>
+        </aside>
+      }
+
+      @if (tab.exercise) {
+        <aside class="exercise-note">
+          <strong>Try it</strong>
+          <span>{{ tab.exercise }}</span>
+        </aside>
+      }
+
+      @if (lesson().practice) {
+        <aside class="exercise-note">
+          <strong>Put it together</strong>
+          <span>{{ lesson().practice }}</span>
+        </aside>
+      }
+
+      @if (lesson().tabs.indexOf(tab) < lesson().tabs.length - 1) {
+        <p class="next-hint">
+          Continue to
+          <button type="button" class="inline-tab" (click)="selectNextTab()">
+            {{ lesson().tabs[lesson().tabs.indexOf(tab) + 1].label }} <span aria-hidden="true">→</span>
+          </button>
+        </p>
+      }
+    </section>
+  }
+</article>
